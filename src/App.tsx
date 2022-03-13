@@ -1,15 +1,7 @@
-import CountriesList from './components/countriesList';
-import PublicIcon from '@mui/icons-material/Public';
+import Countries from './pages/countries';
 
 function App() {
-  return (
-    <>
-      <h1>
-        List of countries <PublicIcon />
-      </h1>
-      <CountriesList />
-    </>
-  );
+  return <Countries />;
 }
 
 export default App;

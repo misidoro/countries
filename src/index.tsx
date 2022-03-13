@@ -8,9 +8,22 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ThemeProvider } from '@mui/material';
+import { theme } from './theme';
+
+const client = new ApolloClient({
+  uri: 'https://countries.trevorblades.com/',
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

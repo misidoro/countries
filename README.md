@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Features
+
+- use absolute imports with base at src/
+- provide theme
+- handle all breakpoints using Grid by Material-UI
+- integration w/ theme (more on this if there is time at the end)
+- todo: pagination
+- API doesn't provide pagination
+
 ## Available Scripts
 
 In the project directory, you can run:

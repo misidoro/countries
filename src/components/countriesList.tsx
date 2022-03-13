@@ -1,48 +1,53 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { Country } from '../types';
+import { Grid, Chip, Card, Typography, CardHeader, CardContent, Divider } from '@mui/material';
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
-
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
+const classes = {
+  card: {
+    borderRadius: 12,
+    minWidth: 256,
+    textAlign: 'center',
   },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  avatar: {
+    width: 60,
+    height: 60,
   },
-];
+  statLabel: {
+    fontSize: 12,
+    color: 'red',
+    fontWeight: 500,
+    margin: 0,
+  },
+  statValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 4,
+    letterSpacing: '1px',
+  },
+};
 
-export interface CountriesListProps {}
+export interface CountriesListProps {
+  countries: Country[];
+}
 
-export default function App(props: CountriesListProps) {
+export default function CountriesList({ countries }: CountriesListProps) {
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <div style={{ display: 'flex', height: '100%' }}>
-        <div style={{ flexGrow: 1 }}>
-          <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} />
-        </div>
-      </div>
-    </div>
+    <Grid container spacing={2}>
+      {countries.map(({ code, name, continent, emoji, languages }: Country) => (
+        <Grid item key={code} xs={12} sm={6} md={4} lg={3}>
+          <Card classes={classes.card} raised={true}>
+            <CardHeader title={<Typography variant='h6'>{name}</Typography>} component='h6' avatar={emoji} />
+            <CardContent component='div'>
+              <Typography variant='caption'>Continent</Typography>
+              <Typography variant='body1'>{continent.name}</Typography>
+              <Typography variant='caption'>Languages</Typography>
+              {languages.map(({ code, name }) => (
+                <Chip label={name} size='small' key={code} />
+              ))}
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 }
