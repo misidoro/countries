@@ -1,5 +1,5 @@
-import CountriesList from "./components/countriesList";
-import PublicIcon from "@mui/icons-material/Public";
+import CountriesList from './components/countriesList';
+import PublicIcon from '@mui/icons-material/Public';
 
 function App() {
   return (
