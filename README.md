@@ -7,13 +7,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - use absolute imports with base at src/
 - provide theme
 - handle all breakpoints using Grid by Material-UI
+- provide client-side pagination as API doesn't provide pagination
+- use hooks for pagination state
+- use Typescript
+- reusable components
+- tests for pagination utils
+- code clean and easy to understand (hopefully)
+
+## Future
+
 - integration w/ theme (more on this if there is time at the end)
-- todo: pagination
-- API doesn't provide pagination
+- improve look and feel across different breakpoints
+- add tests for components
+- improve layout for country cards
+- add filters to filters for languages and continents
+- display states information
 
 ## Available Scripts
 
-In the project directory, you can run:
+` In the project directory, you can run:
 
 ### `npm start`
 
